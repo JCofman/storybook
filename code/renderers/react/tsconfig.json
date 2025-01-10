@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@storybook/react": ["./src"],
+      "@storybook/blocks": ["../../lib/blocks/src"]
+    }
+  },
+  "include": ["src/**/*", "template/**/*"]
+}
