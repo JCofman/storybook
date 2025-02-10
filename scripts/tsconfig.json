@@ -1,26 +1,29 @@
 {
-  "extends": "../tsconfig.json",
+  "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": ".",
-    "types": [
-      "node",
-      "jest"
-    ],
-    "strict": false,
+    "incremental": false,
+    "noImplicitAny": true,
+    "jsx": "react",
+    "moduleResolution": "bundler",
+    "target": "ESNext",
+    "module": "Preserve",
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "strictBindCallApply": true,
+    "lib": ["ESNext"],
+    "types": ["node"],
+    "strict": true,
     "strictNullChecks": false,
     "forceConsistentCasingInFileNames": true,
-    "noUnusedLocals": false,
+    "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "resolveJsonModule": true,
-    "paths": {
-      "verdaccio": [
-        "./typings.d.ts"
-      ]
-    }
+    "resolveJsonModule": true
   },
-  "include": [
-    "./**/*"
-  ]
+  "exclude": ["dist", "**/dist", "node_modules", "**/node_modules"],
+  "include": ["./**/*", "./.eslintrc.js"]
 }

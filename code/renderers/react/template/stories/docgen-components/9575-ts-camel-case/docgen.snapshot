@@ -1,0 +1,34 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+const iconButton = function IconButton(props) {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "icon-button"
+  }, "icon-button");
+};
+iconButton.propTypes = {
+  // deepscan-disable-next-line
+  color: PropTypes.string
+};
+iconButton.defaultProps = {
+  color: 'primary'
+};
+iconButton.__docgenInfo = {
+  "description": "",
+  "methods": [],
+  "displayName": "iconButton",
+  "props": {
+    "color": {
+      "defaultValue": {
+        "value": "'primary'",
+        "computed": false
+      },
+      "description": "",
+      "type": {
+        "name": "string"
+      },
+      "required": false
+    }
+  }
+};
+export default iconButton;
+export const component = iconButton;
