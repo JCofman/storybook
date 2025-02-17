@@ -1,6 +1,19 @@
 on:
   pull_request:
-    types: [opened, synchronize, reopened, labeled, unlabeled]
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
+      - unlabeled
+      - edited
+    branches:
+      - main
+      - next
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number }}
+  cancel-in-progress: true
 
 name: Danger JS
 jobs:
@@ -8,13 +21,13 @@ jobs:
     name: Danger JS
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '14'
-      - uses: actions/checkout@master
+          node-version-file: ".nvmrc"
       - name: Danger JS
-        uses: danger/danger-js@10.9.0
+        uses: danger/danger-js@11.2.6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: --dangerfile .ci/danger/dangerfile.ts
+          args: --dangerfile scripts/dangerfile.ts

@@ -6,7 +6,6 @@
     - [2a. Run unit tests](#2a-run-unit-tests)
       - [Core & Examples Tests](#core--examples-tests)
     - [2b. Run Linter](#2b-run-linter)
-  - [2c. Run Cypress tests](#2c-run-cypress-tests)
   - [Reproductions](#reproductions)
     - [In the monorepo](#in-the-monorepo)
     - [Outside the monorepo](#outside-the-monorepo)
@@ -129,25 +128,13 @@ It can be immensely helpful to get feedback in your editor, if you're using VsCo
 
 This should enable auto-fix for all source files, and give linting warnings and errors within your editor.
 
-### 2c. Run Cypress tests
-
-First make sure the repo is bootstrapped.
-
-Then run `yarn build-storybooks --all`, this creates a static website from all examples.
-
-Then run `yarn serve-storybooks`, this will run the static site on the port cypress expects.
-
-Then run `yarn add cypress -W --optional`. When this has completed cypress should be installed on your system. If it is already on your system, this step can be skipped.
-
-Then run `yarn cypress open` if you want to see the tests run in the UI, or `yarn cypress run` to run the tests headless.
-
 ### Reproductions
 
 #### In the monorepo
 
 The best way to help figure out an issue you are having is to produce a minimal reproduction against the `main` branch.
 
-A good way to do that is using the example `cra-kitchen-sink` app embedded in this repository:
+A good way to do that is using the example `official-storybook` app embedded in this repository:
 
 ```sh
 # Download and build this repository:
@@ -157,7 +144,7 @@ yarn
 yarn bootstrap --core
 
 # make changes to try and reproduce the problem, such as adding components + stories
-cd examples/cra-kitchen-sink
+cd examples/official-storybook
 yarn storybook
 
 # see if you can see the problem, if so, commit it:
