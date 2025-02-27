@@ -1,5 +1,7 @@
 storage: .verdaccio-cache
 
+max_body_size: 60mb
+
 auth:
   auth-memory:
     users:
@@ -31,7 +33,7 @@ packages:
     access: $all
     publish: $all
     proxy: npmjs
-  '@storybook/semver':
+  '@storybook/global':
     access: $all
     publish: $all
     proxy: npmjs
@@ -39,7 +41,11 @@ packages:
     access: $all
     publish: $all
     proxy: npmjs
-  '@storybook/preset-*':
+  '@storybook/preset-ie11':
+    access: $all
+    publish: $all
+    proxy: npmjs
+  '@storybook/preset-scss':
     access: $all
     publish: $all
     proxy: npmjs
@@ -47,11 +53,23 @@ packages:
     access: $all
     publish: $all
     proxy: npmjs
+  '@storybook/addon-coverage':
+    access: $all
+    publish: $all
+    proxy: npmjs
   '@storybook/addon-bench':
     access: $all
     publish: $all
     proxy: npmjs
+  '@storybook/addon-styling':
+    access: $all
+    publish: $all
+    proxy: npmjs
   '@storybook/addon-svelte-csf':
+    access: $all
+    publish: $all
+    proxy: npmjs
+  '@storybook/create-svelte-with-args':
     access: $all
     publish: $all
     proxy: npmjs
@@ -67,23 +85,32 @@ packages:
     access: $all
     publish: $all
     proxy: npmjs
-  '@storybook/mdx1-csf':
-    access: $all
-    publish: $all
-    proxy: npmjs
-  '@storybook/mdx2-csf':
-    access: $all
-    publish: $all
-    proxy: npmjs
-  '@storybook/builder-vite':
-    access: $all
-    publish: $all
-    proxy: npmjs
   '@storybook/expect':
     access: $all
     publish: $all
     proxy: npmjs
-  '@storybook/jest':
+  '@storybook/docs-mdx':
+    access: $all
+    publish: $all
+    proxy: npmjs
+  '@storybook/semver':
+    # TODO: remove this when new versions of all dependents have been published and updated. It is not used anymore but still referenced in the latest packages
+    access: $all
+    publish: $all
+    proxy: npmjs
+  '@storybook/icons':
+    access: $all
+    publish: $all
+    proxy: npmjs
+  '@storybook/ember-cli-storybook':
+    access: $all
+    publish: $all
+    proxy: npmjs
+  '@storybook/addon-webpack5-compiler-swc':
+    access: $all
+    publish: $all
+    proxy: npmjs
+  '@storybook/addon-webpack5-compiler-babel':
     access: $all
     publish: $all
     proxy: npmjs
@@ -95,6 +122,10 @@ packages:
     publish: $all
 
   'sb':
+    access: $all
+    publish: $all
+
+  'create-storybook':
     access: $all
     publish: $all
 

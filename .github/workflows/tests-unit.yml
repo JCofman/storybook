@@ -5,34 +5,38 @@ on:
     branches:
       - next
   pull_request:
-    types: [opened, reopened, labeled, synchronize]
+    types: [opened, synchronize, reopened]
 
 jobs:
   build:
-    name: Core Unit Tests node-${{ matrix.node_version }}, ${{ matrix.os }}
-    if: github.event_name == 'push' || contains(github.event.pull_request.labels.*.name, 'ci:matrix')
+    name: Core Unit Tests, ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
-        node_version: [12, 14, 16]
-        include:
-          - os: macos-latest
-            node_version: 16
-          - os: windows-latest
-            node_version: 16
+        os: [windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
-      - name: Set node version to ${{ matrix.node_version }}
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
         with:
-          node-version: ${{ matrix.node_version }}
-          cache: yarn
-      - name: install, bootstrap
-        run: |
-          yarn install --immutable
-          yarn bootstrap --core
+          fetch-depth: 2
+      - name: Set node version
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+
+      - name: install scripts
+        run: | 
+          cd scripts && yarn install
+
+      - name: install code
+        run: | 
+          cd code && yarn install
+
+      - name: compile
+        run: yarn task --task compile --start-from=compile
+
+      - name: Install Playwright Dependencies
+        run: cd code && yarn exec playwright install chromium --with-deps
+
       - name: test
-        run: |
-          yarn test --runInBand --ci
+        run: yarn test
